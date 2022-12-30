@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm, SubmitHandler } from 'react-hook-form'
 
 type MyFormData = {
   firstName: string
@@ -18,11 +18,14 @@ export default function App() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("firstName", { required: true })} placeholder="名前" />
+      <input
+        {...register('firstName', { required: true })}
+        placeholder="名前"
+      />
       {errors.firstName && <div>名前を入力してください</div>}
-      <input {...register("lastName", { required: true })} placeholder="名字" />
+      <input {...register('lastName', { required: true })} placeholder="名字" />
       {errors.lastName && <div>名字を入力してください</div>}
-      <select {...register("category", { required: true })}>
+      <select {...register('category', { required: true })}>
         <option value="">選択</option>
         <option value="A">カテゴリ A</option>
         <option value="B">カテゴリ B</option>
