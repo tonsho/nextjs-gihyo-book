@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import Button from '.'
 
 export default {
-  title: 'Atom/Button',
+  title: 'Atoms/Button',
   argTypes: {
     variant: {
       options: ['primary', 'secondary'],
