@@ -35,8 +35,8 @@ export function toPropValue<T>(propKey: string, prop?: Responsive<T>, theme?: Ap
         const style = `${propKey}: ${toThemeValueIfNeeded(propKey, prop[responsiveKey], theme)};`
         result.push(`@media screen and (min-width: ${breakpoint}) {${style}}`)
       }
-      return result.join('\n')
     }
+    return result.join('\n')
   }
   return `${propKey}: ${toThemeValueIfNeeded(propKey, prop, theme)};`
 }
