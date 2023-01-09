@@ -43,6 +43,7 @@ export const AuthContextProvider = ({
   const { data, error, mutate } = useSWR<User>(
     `${context.apiRootUrl.replace(/\/$/g, '')}/users/me`,
   )
+  console.log(`##### AuthContextProvider data: ${JSON.stringify(data)}`)
   const isLoading = !data && !error
 
   // サインイン
