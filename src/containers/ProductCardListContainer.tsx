@@ -24,10 +24,7 @@ interface ProductCardListContainerProps {
 /**
  * 商品カードリストコンテナ
  */
-const ProductCardListContainer = ({
-  category,
-  conditions,
-}: ProductCardListContainerProps) => {
+const ProductCardListContainer = ({ category, conditions }: ProductCardListContainerProps) => {
   const { products, isLoading } = useSearch(context, {
     category,
     conditions,
@@ -51,16 +48,14 @@ const ProductCardListContainer = ({
         products.map((p) => (
           <Box key={p.id}>
             <Link href={`/products/${p.id}`} passHref>
-              <a>
-                {/* 商品カード */}
-                <ProductCard
-                  variant="listing"
-                  title={p.title}
-                  price={p.price}
-                  imageUrl={p.imageUrl}
-                  blurDataUrl={p.blurDataUrl}
-                />
-              </a>
+              {/* 商品カード */}
+              <ProductCard
+                variant="listing"
+                title={p.title}
+                price={p.price}
+                imageUrl={p.imageUrl}
+                blurDataUrl={p.blurDataUrl}
+              />
             </Link>
           </Box>
         ))}
