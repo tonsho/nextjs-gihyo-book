@@ -99,6 +99,7 @@ const HomePage: NextPage<HomePageProps> = ({ bookProducts, clothesProducts, shoe
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  console.log('### [pages/index.tsx] getStaticProps()')
   const context: ApiContext = {
     apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
   }
