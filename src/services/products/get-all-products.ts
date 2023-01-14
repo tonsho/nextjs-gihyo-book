@@ -51,7 +51,6 @@ const getAllProducts = async (
     order = 'desc',
   }: GetAllProductsParams = {},
 ): Promise<Product[]> => {
-  console.log(`####### ${JSON.stringify(context)}`)
   const path = `${context.apiRootUrl.replace(/\/$/g, '')}/products`
   const params = new URLSearchParams()
 
@@ -65,8 +64,6 @@ const getAllProducts = async (
   order && params.append('_order', order)
   const query = params.toString()
 
-  console.log(`####### ${path}`)
-
   const ret = await fetcher(query.length > 0 ? `${path}?${query}` : path, {
     headers: {
       Origin: '*',
@@ -75,8 +72,6 @@ const getAllProducts = async (
       credentials: 'include',
     },
   })
-
-  console.log(`####### ${ret}`)
 
   return ret
 }
