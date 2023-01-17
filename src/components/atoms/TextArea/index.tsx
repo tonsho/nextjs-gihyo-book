@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 
-export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextAreaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   /**
    * 最小行数
    */
@@ -18,7 +19,9 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 
 const StyledTextArea = styled.textarea<{ hasError?: boolean }>`
   color: ${({ theme }) => theme.colors.inputText};
-  border: 1px solid ${({ theme, hasError }) => (hasError ? theme.colors.danger : theme.colors.border)};
+  border: 1px solid
+    ${({ theme, hasError }) =>
+      hasError ? theme.colors.danger : theme.colors.border};
   border-radius: 5px;
   box-sizing: border-box;
   outline: none;
@@ -39,10 +42,21 @@ const StyledTextArea = styled.textarea<{ hasError?: boolean }>`
  * テキストエリア
  */
 const TextArea = (props: TextAreaProps) => {
-  const { rows = 5, minRows = 5, maxRows = 10, children, hasError, onChange, ...rest } = props
+  const {
+    rows = 5,
+    minRows = 5,
+    maxRows = 10,
+    children,
+    hasError,
+    onChange,
+    ...rest
+  } = props
   const [textareaRows, setTextareaRows] = useState(Math.min(rows, minRows))
 
-  console.assert(!(rows < minRows), 'TextArea: rows should be greater than minRows.')
+  console.assert(
+    !(rows < minRows),
+    'TextArea: rows should be greater than minRows.',
+  )
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -67,7 +81,7 @@ const TextArea = (props: TextAreaProps) => {
       setTextareaRows(currentRows < maxRows ? currentRows : maxRows)
       onChange && onChange(e)
     },
-    [onChange, minRows, maxRows]
+    [onChange, minRows, maxRows],
   )
 
   return (

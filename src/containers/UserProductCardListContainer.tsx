@@ -23,7 +23,10 @@ interface UserProductCardListContainerProps {
 /**
  * ユーザー商品カードリストコンテナ
  */
-const UserProductCardListContainer = ({ userId, products }: UserProductCardListContainerProps) => {
+const UserProductCardListContainer = ({
+  userId,
+  products,
+}: UserProductCardListContainerProps) => {
   // ユーザーの所持する商品
   const { products: userProducts } = useSearch(context, {
     userId,
@@ -36,7 +39,12 @@ const UserProductCardListContainer = ({ userId, products }: UserProductCardListC
         <Fragment key={p.id}>
           <Link href={`/products/${p.id}`} passHref>
             {/* 商品カード */}
-            <ProductCard variant="small" title={p.title} price={p.price} imageUrl={p.imageUrl} />
+            <ProductCard
+              variant="small"
+              title={p.title}
+              price={p.price}
+              imageUrl={p.imageUrl}
+            />
           </Link>
         </Fragment>
       ))}

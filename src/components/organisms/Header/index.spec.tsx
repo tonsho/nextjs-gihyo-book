@@ -1,14 +1,16 @@
 import { RenderResult, render, screen } from '@testing-library/react'
+import { ThemeProvider } from 'styled-components'
+import Header from '.'
 import { AuthContextProvider } from 'contexts/AuthContext'
 import { useShoppingCartContext } from 'contexts/ShoppingCartContext'
-import { ThemeProvider } from 'styled-components'
 import { theme } from 'themes'
 import { Product, User } from 'types'
-import Header from '.'
 
 jest.mock('contexts/ShoppingCartContext')
 
-const { ShoppingCartContextProvider } = jest.requireActual('contexts/ShoppingCartContext')
+const { ShoppingCartContextProvider } = jest.requireActual(
+  'contexts/ShoppingCartContext',
+)
 
 const authUser: User = {
   id: 1,
@@ -33,7 +35,8 @@ const product: Product = {
 
 describe('Header', () => {
   let renderResult: RenderResult
-  const useShoppingCartContextMock = useShoppingCartContext as jest.MockedFunction<typeof useShoppingCartContext>
+  const useShoppingCartContextMock =
+    useShoppingCartContext as jest.MockedFunction<typeof useShoppingCartContext>
 
   it('カートに商品が存在する', async () => {
     useShoppingCartContextMock.mockReturnValue({
@@ -48,7 +51,7 @@ describe('Header', () => {
             <Header />
           </AuthContextProvider>
         </ShoppingCartContextProvider>
-      </ThemeProvider>
+      </ThemeProvider>,
     )
 
     expect(screen.getAllByTestId('badge-wrapper').length).toBeGreaterThan(0)
@@ -70,7 +73,7 @@ describe('Header', () => {
             <Header />
           </AuthContextProvider>
         </ShoppingCartContextProvider>
-      </ThemeProvider>
+      </ThemeProvider>,
     )
   })
 

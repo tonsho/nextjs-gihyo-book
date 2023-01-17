@@ -69,14 +69,10 @@ const SearchPage: NextPage = () => {
         <Box marginBottom={1}>
           <Breadcrumb>
             <BreadcrumbItem>
-              <Link href="/">
-                トップ
-              </Link>
+              <Link href="/">トップ</Link>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <Link href="/search">
-                検索
-              </Link>
+              <Link href="/search">検索</Link>
             </BreadcrumbItem>
             {/* パンくずリストを選択したカテゴリから生成 */}
             {slug.slice(0, slug.length - 1).map((category, i) => (

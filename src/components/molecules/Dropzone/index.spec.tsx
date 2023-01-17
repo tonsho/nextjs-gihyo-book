@@ -12,7 +12,7 @@ describe('Dropzone', () => {
     renderResult = render(
       <ThemeProvider theme={theme}>
         <Dropzone onDrop={handleProp} />
-      </ThemeProvider>
+      </ThemeProvider>,
     )
   })
 

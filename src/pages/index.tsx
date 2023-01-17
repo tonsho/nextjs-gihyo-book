@@ -11,7 +11,11 @@ import { ApiContext, Product } from 'types'
 
 type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>
 
-const HomePage: NextPage<HomePageProps> = ({ bookProducts, clothesProducts, shoesProducts }: HomePageProps) => {
+const HomePage: NextPage<HomePageProps> = ({
+  bookProducts,
+  clothesProducts,
+  shoesProducts,
+}: HomePageProps) => {
   // 商品カードカルーセルをレンダリング
   const renderProductCardCarousel = (products: Product[]) => {
     return (
@@ -52,7 +56,8 @@ const HomePage: NextPage<HomePageProps> = ({ bookProducts, clothesProducts, shoe
           </Box>
           <Box width="100%">
             <Text as="p" color="white" variant="mediumLarge">
-              Gihyo C2Cは実践的なNext.jsアプリケーション開発で使われるデモアプリです。モックサーバを使用しています。
+              Gihyo
+              C2Cは実践的なNext.jsアプリケーション開発で使われるデモアプリです。モックサーバを使用しています。
               ソースコードは
               <Text
                 as="a"
@@ -73,7 +78,11 @@ const HomePage: NextPage<HomePageProps> = ({ bookProducts, clothesProducts, shoe
         </Flex>
       </Flex>
       <Flex paddingBottom={2} justifyContent="center">
-        <Box paddingLeft={{ base: 2, md: 0 }} paddingRight={{ base: 2, md: 0 }} width={{ base: '100%', md: '1040px' }}>
+        <Box
+          paddingLeft={{ base: 2, md: 0 }}
+          paddingRight={{ base: 2, md: 0 }}
+          width={{ base: '100%', md: '1040px' }}
+        >
           <Box marginBottom={3}>
             <Text as="h2" variant="large">
               トップス

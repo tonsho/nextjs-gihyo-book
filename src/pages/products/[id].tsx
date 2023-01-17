@@ -1,4 +1,10 @@
-import type { GetStaticPaths, GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next'
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
+  NextPage,
+} from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import BreadcrumbItem from 'components/atoms/BreadcrumbItem'
@@ -28,7 +34,10 @@ const context: ApiContext = {
 
 type ProductPageProps = InferGetStaticPropsType<typeof getStaticProps>
 
-const ProductPage: NextPage<ProductPageProps> = ({ id, product: initial }: ProductPageProps) => {
+const ProductPage: NextPage<ProductPageProps> = ({
+  id,
+  product: initial,
+}: ProductPageProps) => {
   const router = useRouter()
   // 商品
   const data = useProduct(context, { id, initial })
@@ -57,14 +66,10 @@ const ProductPage: NextPage<ProductPageProps> = ({ id, product: initial }: Produ
         <Box>
           <Breadcrumb>
             <BreadcrumbItem>
-              <Link href="/">
-                トップ
-              </Link>
+              <Link href="/">トップ</Link>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <Link href="/search">
-                検索
-              </Link>
+              <Link href="/search">検索</Link>
             </BreadcrumbItem>
             <BreadcrumbItem>
               <Link href={`/search/${product.category}`}>
@@ -74,7 +79,12 @@ const ProductPage: NextPage<ProductPageProps> = ({ id, product: initial }: Produ
             <BreadcrumbItem>{product.title}</BreadcrumbItem>
           </Breadcrumb>
           <Flex paddingTop={2} paddingBottom={1} justifyContent="center">
-            <ProductCard variant="detail" title={product.title} price={product.price} imageUrl={product.imageUrl} />
+            <ProductCard
+              variant="detail"
+              title={product.title}
+              price={product.price}
+              imageUrl={product.imageUrl}
+            />
           </Flex>
           <Separator />
           <Box paddingTop={1}>
@@ -93,20 +103,29 @@ const ProductPage: NextPage<ProductPageProps> = ({ id, product: initial }: Produ
           </Box>
         </Box>
         <Box padding={2} width={{ base: '100%', md: '700px' }}>
-          <Flex justifyContent="space-between" flexDirection="column" height={{ base: '', md: '100%' }}>
+          <Flex
+            justifyContent="space-between"
+            flexDirection="column"
+            height={{ base: '', md: '100%' }}
+          >
             {/* 商品概要を表示、改行ごとにテキストコンポーネントでラップ */}
             <Box>
-              {product.description.split('\n').map((text: string, i: number) => (
-                <Text key={i} as="p">
-                  {text}
-                </Text>
-              ))}
+              {product.description
+                .split('\n')
+                .map((text: string, i: number) => (
+                  <Text key={i} as="p">
+                    {text}
+                  </Text>
+                ))}
             </Box>
             {/*
               カート追加ボタンコンテナ
               ボタンを押されたらShoppingCartContextに商品を追加する
             */}
-            <AddToCartButtonContainer product={product} onAddToCartButtonClick={handleAddToCartButtonClick} />
+            <AddToCartButtonContainer
+              product={product}
+              onAddToCartButtonClick={handleAddToCartButtonClick}
+            />
           </Flex>
         </Box>
       </Flex>
@@ -125,7 +144,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: true }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: GetStaticPropsContext) => {
   const context: ApiContext = {
     apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
   }

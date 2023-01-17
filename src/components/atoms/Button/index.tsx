@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 import { Responsive } from 'types'
-import { Color, FontSize, LetterSpacing, LineHeight, Space, toPropValue } from 'utils/styles'
+import {
+  Color,
+  FontSize,
+  LetterSpacing,
+  LineHeight,
+  Space,
+  toPropValue,
+} from 'utils/styles'
 
 export type ButtonVariant = keyof typeof variants
 
@@ -89,23 +96,31 @@ const Button = styled.button<ButtonProps>`
   ${({ variant, color, backgroundColor, pseudoClass, theme }) => {
     if (variant && variants[variant]) {
       const styles = []
-      !color && styles.push(toPropValue('color', variants[variant].color, theme))
-      !backgroundColor && styles.push(toPropValue('background-color', variants[variant].backgroundColor, theme))
+      !color &&
+        styles.push(toPropValue('color', variants[variant].color, theme))
+      !backgroundColor &&
+        styles.push(
+          toPropValue(
+            'background-color',
+            variants[variant].backgroundColor,
+            theme,
+          ),
+        )
       !pseudoClass &&
         styles.push(
           `&:hover ${toPropValue(
             'background-color',
             variants[variant].pseudoClass.hover.backgroundColor,
-            theme
-          )}`.replaceAll('\n', '')
+            theme,
+          )}`.replaceAll('\n', ''),
         )
       !pseudoClass &&
         styles.push(
           `&:disabled ${toPropValue(
             'background-color',
             variants[variant].pseudoClass.disabled.backgroundColor,
-            theme
-          )}`.replaceAll('\n', '')
+            theme,
+          )}`.replaceAll('\n', ''),
         )
       return styles.join('\n')
     }
@@ -114,7 +129,8 @@ const Button = styled.button<ButtonProps>`
   ${(props) => toPropValue('letter-spacing', props.letterSpacing, props.theme)}
   ${(props) => toPropValue('line-height', props.lineHeight, props.theme)}
   ${(props) => toPropValue('color', props.color, props.theme)}
-  ${(props) => toPropValue('background-color', props.backgroundColor, props.theme)}
+  ${(props) =>
+    toPropValue('background-color', props.backgroundColor, props.theme)}
   ${(props) => toPropValue('width', props.width, props.theme)}
   ${(props) => toPropValue('height', props.height, props.theme)}
   ${(props) => toPropValue('min-width', props.minWidth, props.theme)}
@@ -133,10 +149,18 @@ const Button = styled.button<ButtonProps>`
   ${(props) => toPropValue('padding-bottom', props.paddingBottom, props.theme)}
   ${(props) => toPropValue('padding-right', props.paddingRight, props.theme)}
   &:hover {
-    ${(props) => toPropValue('background-color', props?.pseudoClass?.hover?.backgroundColor)}
+    ${(props) =>
+      toPropValue(
+        'background-color',
+        props?.pseudoClass?.hover?.backgroundColor,
+      )}
   }
   &:disabled {
-    ${(props) => toPropValue('background-color', props?.pseudoClass?.disabled?.backgroundColor)}
+    ${(props) =>
+      toPropValue(
+        'background-color',
+        props?.pseudoClass?.disabled?.backgroundColor,
+      )}
   }
   cursor: pointer;
   outline: 0;

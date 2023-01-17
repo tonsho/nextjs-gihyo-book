@@ -5,7 +5,14 @@ export default {
   title: 'Atoms/Text',
   argTypes: {
     variant: {
-      options: ['extraSmall', 'small', 'medium', 'mediumLarge', 'large', 'extraLarge'],
+      options: [
+        'extraSmall',
+        'small',
+        'medium',
+        'mediumLarge',
+        'large',
+        'extraLarge',
+      ],
       control: { type: 'select' },
       defaultValue: 'medium',
       // docsに表示する内容を設定

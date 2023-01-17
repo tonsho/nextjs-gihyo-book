@@ -93,7 +93,8 @@ const DropzoneRoot = styled.div<DropzoneRootProps>`
   border-radius: 8px;
   cursor: pointer;
   width: ${({ width }) => (typeof width === 'number' ? `${width}px` : width)};
-  height: ${({ height }) => (typeof height === 'number' ? `${height}px` : height)};
+  height: ${({ height }) =>
+    typeof height === 'number' ? `${height}px` : height};
 `
 
 // ドロップゾーンの中身
@@ -106,7 +107,8 @@ const DropzoneContent = styled.div<{
   align-items: center;
   justify-content: center;
   width: ${({ width }) => (typeof width === 'number' ? `${width}px` : width)};
-  height: ${({ height }) => (typeof height === 'number' ? `${height}px` : height)};
+  height: ${({ height }) =>
+    typeof height === 'number' ? `${height}px` : height};
 `
 
 const DropzoneInputFile = styled.input`
@@ -135,7 +137,11 @@ const Dropzone = (props: DropzoneProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsFocused(false)
 
-    const files = value.concat(getFilesFromEvent(e).filter((f) => acceptedFileTypes.includes(f.type as FileType)))
+    const files = value.concat(
+      getFilesFromEvent(e).filter((f) =>
+        acceptedFileTypes.includes(f.type as FileType),
+      ),
+    )
 
     onDrop && onDrop(files)
     onChange && onChange(files)
@@ -147,10 +153,18 @@ const Dropzone = (props: DropzoneProps) => {
     e.stopPropagation()
     setIsFocused(false)
 
-    const files = value.concat(getFilesFromEvent(e).filter((f) => acceptedFileTypes.includes(f.type as FileType)))
+    const files = value.concat(
+      getFilesFromEvent(e).filter((f) =>
+        acceptedFileTypes.includes(f.type as FileType),
+      ),
+    )
 
     if (files.length == 0) {
-      return window.alert(`次のファイルフォーマットは指定できません${acceptedFileTypes.join(' ,')})`)
+      return window.alert(
+        `次のファイルフォーマットは指定できません${acceptedFileTypes.join(
+          ' ,',
+        )})`,
+      )
     }
 
     onDrop && onDrop(files)
