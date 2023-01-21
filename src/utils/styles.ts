@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-types */
 import { theme } from 'themes'
 import type { Responsive, ResponsiveProp } from 'types'
 

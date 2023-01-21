@@ -41,7 +41,9 @@ describe('Header', () => {
   it('カートに商品が存在する', async () => {
     useShoppingCartContextMock.mockReturnValue({
       cart: [product],
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       addProductToCart: () => {},
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       removeProductFromCart: () => {},
     })
     renderResult = render(
@@ -63,7 +65,9 @@ describe('Header', () => {
   it('未サインイン', async () => {
     useShoppingCartContextMock.mockReturnValue({
       cart: [],
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       addProductToCart: () => {},
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       removeProductFromCart: () => {},
     })
     renderResult = render(
