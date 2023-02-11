@@ -27,4 +27,8 @@ const logger = pino(
   stream,
 )
 
+export const processInfo = () => {
+  return process.browser ? location.origin : process.cwd()
+}
+
 export default logger
