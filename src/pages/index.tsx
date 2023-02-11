@@ -17,7 +17,9 @@ const HomePage: NextPage<HomePageProps> = ({
   clothesProducts,
   shoesProducts,
 }: HomePageProps) => {
-  logger.info(`### [${processInfo()}] HomePage コンポーネントの描画関数内で呼ばれたログです`)
+  logger.info(
+    `### [${processInfo()}] HomePage コンポーネントの描画関数内で呼ばれたログです`,
+  )
   // 商品カードカルーセルをレンダリング
   const renderProductCardCarousel = (products: Product[]) => {
     return (
